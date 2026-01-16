@@ -1,13 +1,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 
-interface ProjectExhibitionProps {
-  onRequestConsultation: () => void;
-}
-
-const ProjectExhibition: React.FC<ProjectExhibitionProps> = ({ onRequestConsultation }) => {
+const ProjectExhibition: React.FC = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -332,7 +330,7 @@ const ProjectExhibition: React.FC<ProjectExhibitionProps> = ({ onRequestConsulta
       {/* Floating Action Button (FAB) for Consultation */}
       {!isExpanded && (
         <button 
-          onClick={onRequestConsultation}
+          onClick={() => navigate('/consultation')}
           className="fixed bottom-12 right-12 z-50 group flex items-center space-x-5 bg-transparent"
         >
           <div className="flex flex-col items-end opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-4 group-hover:translate-x-0">
