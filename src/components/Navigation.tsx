@@ -51,10 +51,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
               }}
               className="group overflow-hidden relative"
             >
-              <span className={`text-4xl md:text-7xl font-serif tracking-tight transition-transform duration-500 block ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`} style={{ transitionDelay: `${idx * 100}ms` }}>
+              <span className={`text-4xl md:text-7xl font-serif tracking-tight transition-transform duration-500 block ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} ${currentView === item.id ? 'opacity-60' : ''}`} style={{ transitionDelay: `${idx * 100}ms` }}>
                 {item.label}
               </span>
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-[#8c7e6d] group-hover:w-full transition-all duration-500" />
+              <span className={`absolute bottom-0 left-0 h-px bg-[#8c7e6d] transition-all duration-500 ${currentView === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </button>
           ))}
         </div>
