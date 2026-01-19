@@ -12,14 +12,30 @@ const ProjectExhibition: React.FC = () => {
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [isExpanded, setIsExpanded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [isScrollingToDetails, setIsScrollingToDetails] = useState(false);
   
   const contentRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      
+      // Auto-collapse when scrolling to top (but not if we're currently scrolling to details)
+      if (isExpanded && !isScrollingToDetails && currentScrollY < 50) {
+        setIsExpanded(false);
+      }
+      
+      // Reset scrolling flag once we've scrolled past a threshold
+      if (isScrollingToDetails && currentScrollY > 100) {
+        setIsScrollingToDetails(false);
+      }
+    };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isExpanded, isScrollingToDetails]);
 
   const nextProject = () => {
     if (isTransitioning || isExpanded) return;
@@ -45,16 +61,23 @@ const ProjectExhibition: React.FC = () => {
     }, 1800);
   };
 
-  const handleExpand = () => {
+  const handleShowDetails = () => {
     setIsExpanded(true);
+    setIsScrollingToDetails(true);
+    
+    // Wait a bit for the DOM to update, then scroll
     setTimeout(() => {
-      window.scrollTo({ top: window.innerHeight * 0.4, behavior: 'smooth' });
+      if (detailsRef.current) {
+        detailsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: window.innerHeight * 0.4, behavior: 'smooth' });
+      }
+      
+      // Reset scrolling flag after scroll completes (smooth scroll takes ~500ms)
+      setTimeout(() => {
+        setIsScrollingToDetails(false);
+      }, 800);
     }, 100);
-  };
-
-  const handleCollapse = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => setIsExpanded(false), 500);
   };
 
   const currentProject = PROJECTS[currentIndex];
@@ -161,21 +184,13 @@ const ProjectExhibition: React.FC = () => {
                 {currentProject.location} — {currentProject.year}
               </div>
               
-              {!isExpanded ? (
+              {!isExpanded && (
                 <button 
-                  onClick={handleExpand}
+                  onClick={handleShowDetails}
                   className={`group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] hover:text-[#8c7e6d] transition-all ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`}
                   style={{ animationDelay: '900ms' }}
                 >
-                  <span className="group-hover:-translate-x-2 transition-transform duration-500">Explore Space</span>
-                  <span className="w-10 h-px bg-[#f5f2ed40] group-hover:bg-[#8c7e6d] group-hover:w-20 transition-all duration-700" />
-                </button>
-              ) : (
-                <button 
-                  onClick={handleCollapse}
-                  className="group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] hover:text-[#8c7e6d] transition-all"
-                >
-                  <span className="group-hover:-translate-x-2 transition-transform duration-500 text-white">Back to Exhibition</span>
+                  <span className="group-hover:-translate-x-2 transition-transform duration-500">Show Details</span>
                   <span className="w-10 h-px bg-[#f5f2ed40] group-hover:bg-[#8c7e6d] group-hover:w-20 transition-all duration-700" />
                 </button>
               )}
@@ -205,7 +220,7 @@ const ProjectExhibition: React.FC = () => {
 
       {/* Expanded Content Flow */}
       {isExpanded && (
-        <div className="relative z-30 pt-40 bg-[#0d0d0d]">
+        <div ref={detailsRef} className="relative z-30 pt-40 bg-[#0d0d0d]">
           {/* Narrative Section */}
           <section className="py-60 px-8 md:px-20 max-w-screen-xl mx-auto grid md:grid-cols-2 gap-24 items-start">
             <div className="space-y-16">
@@ -307,23 +322,24 @@ const ProjectExhibition: React.FC = () => {
             </div>
           </section>
 
-          {/* Next Project Prompt */}
-          <section className="py-60 text-center bg-[#0d0d0d]">
-             <div className="mb-24 flex justify-center items-center space-x-8">
-               <span className="h-px w-20 bg-[#f5f2ed10]" />
-               <span className="text-[10px] uppercase tracking-[0.8em] opacity-40 italic">End of Exhibit 0{currentProject.id}</span>
-               <span className="h-px w-20 bg-[#f5f2ed10]" />
-             </div>
-             <button 
-                onClick={handleCollapse}
-                className="group relative inline-flex flex-col items-center space-y-8"
-             >
-               <div className="w-16 h-16 rounded-full border border-[#f5f2ed20] flex items-center justify-center group-hover:bg-[#f5f2ed] group-hover:text-[#0d0d0d] transition-all duration-700">
-                 <svg className="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 9l-7 7-7-7" /></svg>
-               </div>
-               <span className="text-[10px] uppercase tracking-[0.6em] opacity-40 group-hover:opacity-100 group-hover:tracking-[0.8em] transition-all duration-700">Return to Showcase</span>
-             </button>
-          </section>
+           {/* Next Project Prompt */}
+           <section className="py-60 text-center bg-[#0d0d0d]">
+              <div className="mb-24 flex justify-center items-center space-x-8">
+                <span className="h-px w-20 bg-[#f5f2ed10]" />
+                <span className="text-[10px] uppercase tracking-[0.8em] opacity-40 italic">End of Exhibit 0{currentProject.id}</span>
+                <span className="h-px w-20 bg-[#f5f2ed10]" />
+              </div>
+              
+              {/* Link to Gallery */}
+              <button
+                onClick={() => navigate('/gallery')}
+                className="group flex items-center justify-center space-x-4 text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition-all duration-500 mx-auto mb-8"
+              >
+                <span className="h-px w-8 bg-[#8c7e6d] opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
+                <span>View Complete Gallery</span>
+                <span className="h-px w-8 bg-[#8c7e6d] opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
+              </button>
+           </section>
         </div>
       )}
 

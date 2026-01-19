@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import HeroTrustCards from './HeroTrustCards';
 
 const HeroCinematic: React.FC = () => {
   const navigate = useNavigate();
@@ -103,28 +104,31 @@ const HeroCinematic: React.FC = () => {
           transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
         >
-          {/* Primary CTA */}
-          <button
-            onClick={() => navigate('/consultation')}
-            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500"
-          >
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:opacity-60 transition-opacity">
-              Book Consultation
-            </span>
-            <span className="w-12 h-px bg-[#f5f2ed] transition-all duration-500 group-hover:w-24 group-hover:bg-[#8c7e6d]" />
-          </button>
-
-          {/* Secondary CTA */}
+          {/* Primary CTA - Browse Projects */}
           <button
             onClick={() => navigate('/exhibition')}
-            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500 opacity-70 hover:opacity-100"
+            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500"
           >
+            <span className="w-12 h-px bg-[#f5f2ed] transition-all duration-500 group-hover:w-24 group-hover:bg-[#8c7e6d]" />
             <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:opacity-60 transition-opacity">
               Browse Projects
             </span>
             <span className="w-8 h-px bg-[#8c7e6d]/50 transition-all duration-500 group-hover:w-16 group-hover:bg-[#8c7e6d]" />
           </button>
+
+          {/* Secondary CTA - Book Consultation */}
+          <button
+            onClick={() => navigate('/consultation')}
+            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500 opacity-70 hover:opacity-100"
+          >
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:opacity-60 transition-opacity">
+              Book Consultation
+            </span>
+          </button>
         </motion.div>
+
+        {/* Trust Cards */}
+        <HeroTrustCards />
       </div>
 
       {/* Footer */}

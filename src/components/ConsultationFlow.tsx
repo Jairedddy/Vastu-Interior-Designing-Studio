@@ -1,4 +1,6 @@
 import React from 'react';
+import SurfaceCard from './SurfaceCard';
+import SectionHeader from './SectionHeader';
 
 const ConsultationFlow: React.FC = () => {
   const [step, setStep] = React.useState(1);
@@ -27,14 +29,17 @@ const ConsultationFlow: React.FC = () => {
             <h3 className="text-4xl md:text-6xl font-serif">What narrative are we building?</h3>
             <div className="grid md:grid-cols-2 gap-4">
               {['Private Estate', 'Corporate HQ', 'Boutique Hotel', 'Retail Concept'].map(type => (
-                <button 
+                <SurfaceCard
                   key={type}
                   onClick={() => { setFormData({...formData, type}); nextStep(); }}
-                  className={`p-8 text-left border border-[#f5f2ed10] hover:border-[#8c7e6d] transition-all ${formData.type === type ? 'bg-[#f5f2ed10] border-[#8c7e6d]' : ''}`}
+                  elevation={formData.type === type ? 'md' : 'sm'}
+                  borderVariant={formData.type === type ? 'accent' : 'primary'}
+                  hover={true}
+                  className={formData.type === type ? 'bg-[rgba(245,242,237,0.05)]' : ''}
                 >
                   <span className="text-xs uppercase tracking-widest opacity-60 block mb-2">Sector</span>
                   <span className="text-xl font-light">{type}</span>
-                </button>
+                </SurfaceCard>
               ))}
             </div>
           </div>
@@ -45,14 +50,16 @@ const ConsultationFlow: React.FC = () => {
             <h3 className="text-4xl md:text-6xl font-serif">Project Scope</h3>
             <div className="grid md:grid-cols-1 gap-4">
               {['₹5Cr — ₹10Cr', '₹10Cr — ₹50Cr', 'Unlimited / Legacy Project'].map(range => (
-                <button 
+                <SurfaceCard
                   key={range}
                   onClick={() => { setFormData({...formData, budget: range}); nextStep(); }}
-                  className="p-8 text-left border border-[#f5f2ed10] hover:border-[#8c7e6d] transition-all flex justify-between items-center"
+                  elevation="sm"
+                  hover={true}
+                  className="flex justify-between items-center"
                 >
                   <span className="text-xl font-light">{range}</span>
                   <span className="w-4 h-px bg-[#8c7e6d]" />
-                </button>
+                </SurfaceCard>
               ))}
             </div>
           </div>
@@ -128,7 +135,11 @@ const ConsultationFlow: React.FC = () => {
   return (
     <section className="min-h-screen pt-40 px-8 pb-20 max-w-5xl mx-auto">
       <div className="mb-20">
-        <span className="text-[10px] tracking-[0.5em] uppercase opacity-40">The Conversation</span>
+        <SectionHeader
+          label="The Conversation"
+          title=""
+          showBorder={false}
+        />
       </div>
       <div className="transition-all duration-1000">
         {renderStep()}

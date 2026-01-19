@@ -9,6 +9,7 @@ const Navigation: React.FC = () => {
   const menuItems: { path: string; label: string }[] = [
     { path: '/', label: 'Index' },
     { path: '/exhibition', label: 'Exhibition' },
+    { path: '/gallery', label: 'Gallery' },
     { path: '/about', label: 'About' },
     { path: '/consultation', label: 'Conversation' }
   ];

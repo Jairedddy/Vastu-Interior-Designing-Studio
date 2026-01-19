@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SectionHeader from './SectionHeader';
 
 const About: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -61,13 +62,11 @@ const About: React.FC = () => {
           {/* Story Section */}
           <div className="grid md:grid-cols-2 gap-20 md:gap-32 mb-40 md:mb-60">
             <div className="space-y-8 animate-fade-in" style={{ animationDelay: '700ms' }}>
-              <div className="flex items-center space-x-6 mb-12">
-                <div className="w-12 h-px bg-[#8c7e6d]" />
-                <span className="text-[10px] tracking-[0.6em] uppercase text-[#8c7e6d]">Our Story</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-serif italic leading-tight mb-8">
-                Founded on the principle that space is the ultimate luxury.
-              </h2>
+              <SectionHeader
+                label="Our Story"
+                title="Founded on the principle that space is the ultimate luxury."
+                showBorder={true}
+              />
             </div>
             <div className="space-y-6 animate-fade-in" style={{ animationDelay: '900ms' }}>
               <p className="text-lg font-light leading-relaxed opacity-70">
@@ -115,11 +114,13 @@ const About: React.FC = () => {
           </div>
 
           {/* Locations */}
-          <div className="border-t border-[#f5f2ed10] pt-20 animate-fade-in" style={{ animationDelay: '1700ms' }}>
-            <div className="flex items-center space-x-6 mb-12">
-              <div className="w-12 h-px bg-[#8c7e6d]" />
-              <span className="text-[10px] tracking-[0.6em] uppercase text-[#8c7e6d]">Presence</span>
-            </div>
+          <div className="border-t border-[rgba(245,242,237,0.1)] pt-20 animate-fade-in" style={{ animationDelay: '1700ms' }}>
+            <SectionHeader
+              label="Presence"
+              title=""
+              showBorder={false}
+              className="mb-12"
+            />
             <div className="grid md:grid-cols-3 gap-12 md:gap-20">
               {[
                 { city: 'Mumbai', address: 'Worli, Mumbai 400018', country: 'India' },
