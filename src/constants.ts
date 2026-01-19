@@ -10,6 +10,7 @@ export const PROJECTS: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000',
     year: '2024',
     category: 'Residential',
+    coordinates: [19.0176, 72.8562], // Worli, Mumbai
     gallery: [
       'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=2000',
       'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&q=80&w=2000',
@@ -28,6 +29,7 @@ export const PROJECTS: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000',
     year: '2023',
     category: 'Hospitality',
+    coordinates: [15.5953, 73.7558], // Assagao, Goa
     gallery: [
       'https://images.unsplash.com/photo-1600566753086-00f18fb6f3ea?auto=format&fit=crop&q=80&w=2000',
       'https://images.unsplash.com/photo-1600121848594-d86cc4f595e5?auto=format&fit=crop&q=80&w=2000',
@@ -46,6 +48,7 @@ export const PROJECTS: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000',
     year: '2024',
     category: 'Residential',
+    coordinates: [28.6139, 77.2090], // Lutyens, New Delhi
     gallery: [
       'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2000',
       'https://images.unsplash.com/photo-1600210492493-124a0d50b28a?auto=format&fit=crop&q=80&w=2000',
@@ -64,6 +67,7 @@ export const PROJECTS: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000',
     year: '2023',
     category: 'Commercial',
+    coordinates: [17.4239, 78.4078], // Jubilee Hills, Hyderabad
     gallery: [
       'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=2000',
       'https://images.unsplash.com/photo-1618221469555-7f3ad97540d6?auto=format&fit=crop&q=80&w=2000',

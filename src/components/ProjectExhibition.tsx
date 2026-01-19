@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
+import ListingMap from './ListingMap';
 
 const ProjectExhibition: React.FC = () => {
   const navigate = useNavigate();
@@ -321,6 +322,59 @@ const ProjectExhibition: React.FC = () => {
               </div>
             </div>
           </section>
+
+          {/* Location Map Section */}
+          {currentProject.coordinates && (
+            <section className="py-40 bg-[#0d0d0d]">
+              <div className="px-8 md:px-20 max-w-screen-2xl mx-auto mb-12">
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="h-px w-12 bg-[#8c7e6d] opacity-30" />
+                  <span className="text-[10px] uppercase tracking-[0.6em] text-[#8c7e6d] font-light">
+                    Location Context
+                  </span>
+                </div>
+                <h3 className="text-3xl md:text-5xl font-serif italic mb-4">
+                  {currentProject.location}
+                </h3>
+                <p className="text-base font-light opacity-60 max-w-2xl">
+                  Precise location and neighborhood context.
+                </p>
+              </div>
+              
+              {/* Map Container with Borders */}
+              <div className="px-8 md:px-20 max-w-screen-2xl mx-auto">
+                <div 
+                  className="relative overflow-hidden"
+                  style={{
+                    border: `1px solid rgba(140, 126, 109, 0.3)`,
+                    borderRadius: '4px',
+                    backgroundColor: '#0d0d0d',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
+                  {/* Top border accent */}
+                  <div 
+                    className="absolute top-0 left-0 right-0 h-px z-10"
+                    style={{ backgroundColor: 'rgba(140, 126, 109, 0.2)' }}
+                  />
+                  
+                  {/* Map */}
+                  <div className="w-full" style={{ height: '500px' }}>
+                    <ListingMap
+                      focusedProject={currentProject}
+                      zoom={14}
+                    />
+                  </div>
+                  
+                  {/* Bottom border accent */}
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 h-px z-10"
+                    style={{ backgroundColor: 'rgba(140, 126, 109, 0.2)' }}
+                  />
+                </div>
+              </div>
+            </section>
+          )}
 
            {/* Next Project Prompt */}
            <section className="py-60 text-center bg-[#0d0d0d]">
