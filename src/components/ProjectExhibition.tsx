@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
-import { Project } from '../types';
 import ListingMap from './ListingMap';
 import SmartImage from './SmartImage';
 
@@ -16,7 +15,6 @@ const ProjectExhibition: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isScrollingToDetails, setIsScrollingToDetails] = useState(false);
   
-  const contentRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
