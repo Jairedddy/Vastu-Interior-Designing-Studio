@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 import ListingMap from './ListingMap';
+import SmartImage from './SmartImage';
 
 const ProjectExhibition: React.FC = () => {
   const navigate = useNavigate();
@@ -136,10 +137,12 @@ const ProjectExhibition: React.FC = () => {
       <div className={`${isExpanded ? 'fixed' : 'absolute'} inset-0 z-0 h-screen overflow-hidden`}>
         {previousProject && !isExpanded && (
           <div className="absolute inset-0 z-0">
-            <img 
-              src={previousProject.imageUrl} 
+            <SmartImage
+              src={previousProject.imageUrl}
               alt=""
-              className="w-full h-full object-cover animate-recede-blur"
+              className="w-full h-full animate-recede-blur"
+              objectFit="cover"
+              sizes="100vw"
             />
           </div>
         )}
@@ -148,15 +151,22 @@ const ProjectExhibition: React.FC = () => {
           key={currentProject.id}
           className={`absolute inset-0 z-10 overflow-hidden ${isTransitioning ? (direction === 'next' ? 'animate-curtain-next' : 'animate-curtain-prev') : ''}`}
         >
-          <img 
-            src={currentProject.imageUrl} 
-            alt={currentProject.title}
-            className="w-full h-full object-cover animate-project-zoom will-change-transform"
+          <div 
+            className="w-full h-full animate-project-zoom will-change-transform"
             style={{ 
               transform: isExpanded ? `translateY(${scrollY * 0.4}px)` : 'none',
               filter: isExpanded ? `brightness(${Math.max(0.1, 0.6 - scrollY / 1000)})` : 'none'
             }}
-          />
+          >
+            <SmartImage
+              src={currentProject.imageUrl}
+              alt={currentProject.title}
+              className="w-full h-full"
+              critical={currentIndex === 0}
+              sizes="100vw"
+              objectFit="cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-60" />
         </div>
       </div>
@@ -174,7 +184,7 @@ const ProjectExhibition: React.FC = () => {
             <h2 className={`text-5xl md:text-8xl font-serif max-w-4xl tracking-tight leading-[0.9] cursor-default transition-all duration-700 ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
               {currentProject.title}
             </h2>
-            <p className={`text-sm md:text-base font-light leading-relaxed opacity-60 mt-4 max-w-2xl ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
+            <p className={`hidden md:block text-sm md:text-base font-light leading-relaxed opacity-60 mt-4 max-w-2xl ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
               {currentProject.description}
             </p>
           </div>
@@ -188,30 +198,30 @@ const ProjectExhibition: React.FC = () => {
               {!isExpanded && (
                 <button 
                   onClick={handleShowDetails}
-                  className={`group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] hover:text-[#8c7e6d] transition-all ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`}
+                  className={`group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] md:hover:text-[#8c7e6d] transition-all ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`}
                   style={{ animationDelay: '900ms' }}
                 >
-                  <span className="group-hover:-translate-x-2 transition-transform duration-500">Show Details</span>
-                  <span className="w-10 h-px bg-[#f5f2ed40] group-hover:bg-[#8c7e6d] group-hover:w-20 transition-all duration-700" />
+                  <span className="md:group-hover:-translate-x-2 transition-transform duration-500">Show Details</span>
+                  <span className="w-10 h-px bg-[#f5f2ed40] md:group-hover:bg-[#8c7e6d] md:group-hover:w-20 transition-all duration-700" />
                 </button>
               )}
             </div>
             
             {!isExpanded && (
-              <div className="flex space-x-6">
+              <div className="flex space-x-4 md:space-x-6 mb-20 md:mb-0">
                 <button 
                   onClick={prevProject} 
                   disabled={isTransitioning}
-                  className={`p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
+                  className={`p-3 md:p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
                 </button>
                 <button 
                   onClick={nextProject} 
                   disabled={isTransitioning}
-                  className={`p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
+                  className={`p-3 md:p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
                 </button>
               </div>
             )}
@@ -253,11 +263,16 @@ const ProjectExhibition: React.FC = () => {
                 <div 
                   className="w-full h-full overflow-hidden"
                 >
-                  <img 
-                    src={img} 
-                    alt={`${currentProject.title} detail ${idx}`} 
-                    className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105"
-                  />
+                  <div className="w-full h-full transition-transform duration-[3s] group-hover:scale-105">
+                    <SmartImage
+                      src={img}
+                      alt={`${currentProject.title} detail ${idx}`}
+                      className="w-full h-full"
+                      aspectRatio="16/9"
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                      objectFit="cover"
+                    />
+                  </div>
                 </div>
                 <div className="absolute top-10 right-10 md:top-20 md:right-20 pointer-events-none">
                   <span className="text-[8px] tracking-[0.5em] uppercase opacity-30">Interior Perspective — 0{idx + 1}</span>
@@ -296,11 +311,15 @@ const ProjectExhibition: React.FC = () => {
 
                     <div className={`relative ${idx % 2 === 0 ? 'w-full md:w-3/5' : 'w-full md:w-2/3'} overflow-hidden shadow-2xl`}>
                       <div className="aspect-[4/5] md:aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={mat.imageUrl} 
-                          alt={mat.name} 
-                          className="w-full h-full object-cover transition-all duration-[2.5s] ease-out group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
-                        />
+                        <div className="w-full h-full transition-all duration-[2.5s] ease-out group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0">
+                          <SmartImage
+                            src={mat.imageUrl}
+                            alt={mat.name}
+                            className="w-full h-full"
+                            sizes="(max-width: 768px) 100vw, 60vw"
+                            objectFit="cover"
+                          />
+                        </div>
                       </div>
                       
                       {/* Subtle Overlay Label */}
@@ -378,12 +397,6 @@ const ProjectExhibition: React.FC = () => {
 
            {/* Next Project Prompt */}
            <section className="py-60 text-center bg-[#0d0d0d]">
-              <div className="mb-24 flex justify-center items-center space-x-8">
-                <span className="h-px w-20 bg-[#f5f2ed10]" />
-                <span className="text-[10px] uppercase tracking-[0.8em] opacity-40 italic">End of Exhibit 0{currentProject.id}</span>
-                <span className="h-px w-20 bg-[#f5f2ed10]" />
-              </div>
-              
               {/* Link to Gallery */}
               <button
                 onClick={() => navigate('/gallery')}
@@ -401,7 +414,7 @@ const ProjectExhibition: React.FC = () => {
       {!isExpanded && (
         <button 
           onClick={() => navigate('/consultation')}
-          className="fixed bottom-12 right-12 z-50 group flex items-center space-x-5 bg-transparent"
+          className="fixed bottom-8 md:bottom-12 right-8 md:right-12 z-50 group flex items-center space-x-5 bg-transparent"
         >
           <div className="flex flex-col items-end opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-4 group-hover:translate-x-0">
             <span className="text-[10px] uppercase tracking-[0.4em] font-medium text-white">Begin</span>

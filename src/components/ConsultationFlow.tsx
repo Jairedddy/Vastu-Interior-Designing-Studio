@@ -116,9 +116,9 @@ const ConsultationFlow: React.FC = () => {
         );
       case 5:
         return (
-          <div className="text-center py-40">
-            <h3 className="text-6xl font-serif mb-6">Acknowledged.</h3>
-            <p className="opacity-60 max-w-sm mx-auto">Our director will review your vision. We only accept four commissions per solar cycle. You will hear from us shortly.</p>
+          <div className="text-center py-20 md:py-40 px-4">
+            <h3 className="text-4xl md:text-6xl font-serif mb-6">Acknowledged.</h3>
+            <p className="opacity-60 max-w-sm mx-auto text-sm md:text-base leading-relaxed">Our director will review your vision. We only accept four commissions per solar cycle. You will hear from us shortly.</p>
             <button 
               onClick={() => window.location.reload()}
               className="mt-12 text-xs uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { GalleryImage } from '../types';
+import SmartImage from './SmartImage';
 
 export interface GalleryMasonryProps {
   images: GalleryImage[];
@@ -60,15 +61,18 @@ const GalleryMasonry: React.FC<GalleryMasonryProps> = ({ images, onImageClick })
         >
           {/* Image */}
           <div className="relative w-full overflow-hidden bg-[#1a1a1a]">
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              loading="lazy"
-            />
+            <div className="w-full transition-transform duration-700 ease-out group-hover:scale-105">
+              <SmartImage
+                src={image.src}
+                alt={image.alt}
+                className="w-full"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                objectFit="cover"
+              />
+            </div>
             
             {/* Gradient overlay for caption readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           </div>
 
           {/* Editorial Caption - Reveals on hover */}

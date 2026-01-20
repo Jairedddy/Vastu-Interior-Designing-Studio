@@ -6,6 +6,7 @@ import { colors, spacing, typography } from '../lib/design-tokens';
 import GalleryMasonry from './GalleryMasonry';
 import GalleryLightbox from './GalleryLightbox';
 import SectionHeader from './SectionHeader';
+import SmartImage from './SmartImage';
 
 /**
  * GallerySection Component
@@ -105,46 +106,48 @@ const GallerySection: React.FC = () => {
             </div>
             
             {/* Navigation */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={prevFilmStrip}
-                className="p-2 border transition-all group"
-                style={{ 
-                  borderColor: colors.border.primary,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = colors.border.accent;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = colors.border.primary;
-                }}
-                aria-label="Previous featured image"
-              >
-                <svg className="w-4 h-4 transition-colors" style={{ color: colors.text.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+            <div className="flex flex-col md:flex-row items-end md:items-center gap-2 md:gap-4">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={prevFilmStrip}
+                  className="p-2 border transition-all group"
+                  style={{ 
+                    borderColor: colors.border.primary,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = colors.border.accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = colors.border.primary;
+                  }}
+                  aria-label="Previous featured image"
+                >
+                  <svg className="w-4 h-4 transition-colors" style={{ color: colors.text.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextFilmStrip}
+                  className="p-2 border transition-all group"
+                  style={{ 
+                    borderColor: colors.border.primary,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = colors.border.accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = colors.border.primary;
+                  }}
+                  aria-label="Next featured image"
+                >
+                  <svg className="w-4 h-4 transition-colors" style={{ color: colors.text.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
               <span className="text-xs font-light" style={{ color: colors.text.tertiary }}>
                 {filmStripIndex + 1} / {featuredImages.length}
               </span>
-              <button
-                onClick={nextFilmStrip}
-                className="p-2 border transition-all group"
-                style={{ 
-                  borderColor: colors.border.primary,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = colors.border.accent;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = colors.border.primary;
-                }}
-                aria-label="Next featured image"
-              >
-                <svg className="w-4 h-4 transition-colors" style={{ color: colors.text.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
 
@@ -161,11 +164,16 @@ const GallerySection: React.FC = () => {
                 onClick={() => goToFilmStripImage(filmStripIndex)}
               >
                 <div className="relative aspect-[21/9] overflow-hidden" style={{ backgroundColor: colors.surface.primary }}>
-                  <img
-                    src={featuredImages[filmStripIndex].src}
-                    alt={featuredImages[filmStripIndex].alt}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
+                  <div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105">
+                    <SmartImage
+                      src={featuredImages[filmStripIndex].src}
+                      alt={featuredImages[filmStripIndex].alt}
+                      className="w-full h-full"
+                      aspectRatio="21/9"
+                      sizes="100vw"
+                      objectFit="cover"
+                    />
+                  </div>
                   
                   {/* Overlay with title */}
                   <div className="absolute inset-0 bg-gradient-to-t opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(to top, ${colors.background.primary}E6, transparent)` }}>

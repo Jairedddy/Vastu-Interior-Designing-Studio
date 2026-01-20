@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SectionHeader from './SectionHeader';
+import SmartImage from './SmartImage';
 
 const About: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -32,10 +33,12 @@ const About: React.FC = () => {
             filter: 'brightness(0.3) contrast(1.1)'
           }}
         >
-          <img 
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000" 
-            alt="Studio" 
-            className="w-full h-full object-cover"
+          <SmartImage
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2000"
+            alt="Studio"
+            className="w-full h-full"
+            sizes="100vw"
+            objectFit="cover"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-[#0d0d0d]/80 to-[#0d0d0d]" />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import HeroTrustCards from './HeroTrustCards';
+import SmartImage from './SmartImage';
 
 const HeroCinematic: React.FC = () => {
   const navigate = useNavigate();
@@ -37,13 +38,16 @@ const HeroCinematic: React.FC = () => {
       {/* Background layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isMobile ? (
-          <img
+          <SmartImage
             src={mobileImage}
             alt="Luxury property"
-            className="w-full h-full object-cover scale-110"
+            critical={true}
+            className="w-full h-full scale-110"
             style={{
               filter: 'contrast(1.1) brightness(0.7)',
             }}
+            objectFit="cover"
+            sizes="100vw"
           />
         ) : (
           <video
@@ -77,7 +81,7 @@ const HeroCinematic: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.6, y: 0 }}
           transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[10px] md:text-xs uppercase tracking-[0.6em] mb-8 md:mb-12 block"
+          className="hidden md:block text-[10px] md:text-xs uppercase tracking-[0.6em] mb-8 md:mb-12"
         >
           Studio of Spatial Intent
         </motion.span>
@@ -107,21 +111,21 @@ const HeroCinematic: React.FC = () => {
           {/* Primary CTA - Browse Projects */}
           <button
             onClick={() => navigate('/exhibition')}
-            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500"
+            className="group relative inline-flex items-center space-x-4 py-4 px-1 md:hover:space-x-6 transition-all duration-500"
           >
-            <span className="w-12 h-px bg-[#f5f2ed] transition-all duration-500 group-hover:w-24 group-hover:bg-[#8c7e6d]" />
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:opacity-60 transition-opacity">
+            <span className="hidden md:block w-12 h-px bg-[#f5f2ed] transition-all duration-500 md:group-hover:w-24 md:group-hover:bg-[#8c7e6d]" />
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] md:group-hover:opacity-60 transition-opacity">
               Browse Projects
             </span>
-            <span className="w-8 h-px bg-[#8c7e6d]/50 transition-all duration-500 group-hover:w-16 group-hover:bg-[#8c7e6d]" />
+            <span className="hidden md:block w-8 h-px bg-[#8c7e6d]/50 transition-all duration-500 md:group-hover:w-16 md:group-hover:bg-[#8c7e6d]" />
           </button>
 
           {/* Secondary CTA - Book Consultation */}
           <button
             onClick={() => navigate('/consultation')}
-            className="group relative inline-flex items-center space-x-4 py-4 px-1 hover:space-x-6 transition-all duration-500 opacity-70 hover:opacity-100"
+            className="group relative inline-flex items-center space-x-4 py-4 px-1 md:hover:space-x-6 transition-all duration-500 opacity-70 md:hover:opacity-100"
           >
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] group-hover:opacity-60 transition-opacity">
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] md:group-hover:opacity-60 transition-opacity">
               Book Consultation
             </span>
           </button>

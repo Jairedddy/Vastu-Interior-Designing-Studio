@@ -77,7 +77,7 @@ const HeroTrustCards: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-12 md:mt-16">
+    <div className="hidden md:flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-12 md:mt-16">
       {trustCards.map((card, index) => (
         <TrustCard
           key={index}
