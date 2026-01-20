@@ -86,7 +86,7 @@ const ProjectExhibition: React.FC = () => {
   const previousProject = prevIndex !== null ? PROJECTS[prevIndex] : null;
 
   return (
-    <section className={`relative w-full bg-[#0d0d0d] ${isExpanded ? 'min-h-screen' : 'h-screen overflow-hidden'}`}>
+    <section className={`relative w-full bg-background-primary ${isExpanded ? 'min-h-screen' : 'h-screen overflow-hidden'}`}>
       <style>{`
         @keyframes project-cinematic-zoom {
           from { transform: scale(1.05); }
@@ -167,7 +167,7 @@ const ProjectExhibition: React.FC = () => {
               objectFit="cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background-primary via-transparent to-transparent opacity-60" />
         </div>
       </div>
 
@@ -175,34 +175,34 @@ const ProjectExhibition: React.FC = () => {
       <div className={`relative h-screen flex flex-col justify-end px-8 md:px-20 pb-20 md:pb-32 max-w-screen-2xl mx-auto z-20 transition-opacity duration-700 ${isExpanded && scrollY > 200 ? 'opacity-0' : 'opacity-100'}`}>
         <div className={`transition-opacity duration-700 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
           <div className={`flex items-center space-x-4 mb-6 ${!isTransitioning ? 'animate-text-delayed' : ''}`} style={{ animationDelay: '100ms' }}>
-            <span className="text-xs tracking-[0.4em] uppercase opacity-60">{currentProject.id} / 04</span>
-            <span className="h-px w-12 bg-[#8c7e6d] opacity-50" />
-            <span className="text-xs tracking-[0.4em] uppercase opacity-60">{currentProject.category}</span>
+            <span className="text-xs tracking-[0.4em] uppercase text-text-primary text-shadow-sm opacity-80">{currentProject.id} / 04</span>
+            <span className="h-px w-12 bg-brass-50 opacity-60" />
+            <span className="text-xs tracking-[0.4em] uppercase text-text-primary text-shadow-sm opacity-80">{currentProject.category}</span>
           </div>
           
           <div className="mb-12">
-            <h2 className={`text-5xl md:text-8xl font-serif max-w-4xl tracking-tight leading-[0.9] cursor-default transition-all duration-700 ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+            <h2 className={`text-5xl md:text-8xl font-serif max-w-4xl tracking-tight leading-[0.9] cursor-default transition-all duration-700 text-text-primary text-shadow-md ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
               {currentProject.title}
             </h2>
-            <p className={`hidden md:block text-sm md:text-base font-light leading-relaxed opacity-60 mt-4 max-w-2xl ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
+            <p className={`hidden md:block text-sm md:text-base font-light leading-relaxed text-text-primary text-shadow-sm opacity-90 mt-4 max-w-2xl ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
               {currentProject.description}
             </p>
           </div>
           
-          <div className="flex justify-between items-end border-t border-[#f5f2ed10] pt-12">
+          <div className="flex justify-between items-end border-t border-primary pt-12">
             <div className="flex flex-col space-y-10 items-start">
-              <div className={`text-[10px] tracking-[0.4em] uppercase ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '700ms' }}>
+              <div className={`text-[10px] tracking-[0.4em] uppercase text-text-primary text-shadow-sm ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`} style={{ animationDelay: '700ms' }}>
                 {currentProject.location} — {currentProject.year}
               </div>
               
               {!isExpanded && (
                 <button 
                   onClick={handleShowDetails}
-                  className={`group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] md:hover:text-[#8c7e6d] transition-all ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`}
+                  className={`group flex items-center space-x-6 text-[10px] uppercase tracking-[0.6em] text-text-primary text-shadow-sm md:hover:text-accent-primary transition-all ${!isTransitioning ? 'animate-text-delayed' : 'opacity-0'}`}
                   style={{ animationDelay: '900ms' }}
                 >
                   <span className="md:group-hover:-translate-x-2 transition-transform duration-500">Show Details</span>
-                  <span className="w-10 h-px bg-[#f5f2ed40] md:group-hover:bg-[#8c7e6d] md:group-hover:w-20 transition-all duration-700" />
+                  <span className="w-10 h-px bg-border-primary md:group-hover:bg-accent-primary md:group-hover:w-20 transition-all duration-700" />
                 </button>
               )}
             </div>
@@ -212,14 +212,16 @@ const ProjectExhibition: React.FC = () => {
                 <button 
                   onClick={prevProject} 
                   disabled={isTransitioning}
-                  className={`p-3 md:p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
+                  className={`p-3 md:p-4 border border-primary rounded-full transition-all text-text-primary ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-text-primary hover:text-background-primary'}`}
+                  aria-label="Previous project"
                 >
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
                 </button>
                 <button 
                   onClick={nextProject} 
                   disabled={isTransitioning}
-                  className={`p-3 md:p-4 border border-[#f5f2ed20] rounded-full transition-all ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-[#f5f2ed] hover:text-[#0d0d0d]'}`}
+                  className={`p-3 md:p-4 border border-primary rounded-full transition-all text-text-primary ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-text-primary hover:text-background-primary'}`}
+                  aria-label="Next project"
                 >
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
                 </button>
@@ -231,7 +233,7 @@ const ProjectExhibition: React.FC = () => {
 
       {/* Expanded Content Flow */}
       {isExpanded && (
-        <div ref={detailsRef} className="relative z-30 pt-40 bg-[#0d0d0d]">
+        <div ref={detailsRef} className="relative z-30 pt-40 bg-background-primary">
           {/* Narrative Section */}
           <section className="py-60 px-8 md:px-20 max-w-screen-xl mx-auto grid md:grid-cols-2 gap-24 items-start">
             <div className="space-y-16">
@@ -239,15 +241,15 @@ const ProjectExhibition: React.FC = () => {
                 Curating the <br /> silent threshold.
               </h2>
               <div className="flex items-center space-x-6">
-                <div className="w-12 h-px bg-[#8c7e6d]" />
-                <div className="text-[10px] tracking-[0.6em] uppercase text-[#8c7e6d]">The Design Ethos</div>
+                <div className="w-12 h-px bg-accent-primary" />
+                <div className="text-[10px] tracking-[0.6em] uppercase text-accent-primary text-muted-large">The Design Ethos</div>
               </div>
             </div>
             <div className="space-y-10">
-              <p className="text-2xl md:text-3xl font-light leading-relaxed opacity-90">
+              <p className="text-2xl md:text-3xl font-light leading-relaxed text-text-primary opacity-95">
                 {currentProject.description} We approached this project as a series of visual frames, where each transition reveals a new material narrative.
               </p>
-              <p className="text-lg font-light leading-relaxed opacity-50">
+              <p className="text-lg font-light leading-relaxed text-text-secondary opacity-80">
                 The spatial configuration prioritizes natural circulation and indirect lighting, ensuring that the architecture serves as a backdrop for both silence and conversation. Every material choice was guided by longevity and tactile resonance.
               </p>
             </div>
@@ -275,14 +277,14 @@ const ProjectExhibition: React.FC = () => {
                   </div>
                 </div>
                 <div className="absolute top-10 right-10 md:top-20 md:right-20 pointer-events-none">
-                  <span className="text-[8px] tracking-[0.5em] uppercase opacity-30">Interior Perspective — 0{idx + 1}</span>
+                  <span className="text-[8px] tracking-[0.5em] uppercase text-text-tertiary text-shadow-sm opacity-60">Interior Perspective — 0{idx + 1}</span>
                 </div>
               </div>
             ))}
           </section>
 
           {/* Artistic Materials Showcase */}
-          <section className="py-80 bg-[#0d0d0d] overflow-hidden">
+          <section className="py-80 bg-background-primary overflow-hidden">
             <div className="px-8 md:px-20 max-w-screen-2xl mx-auto">
               {/* Header */}
               <div className="flex flex-col md:flex-row justify-between items-baseline mb-48 border-b border-[#f5f2ed10] pb-24">
@@ -290,8 +292,8 @@ const ProjectExhibition: React.FC = () => {
                   <h3 className="text-7xl md:text-[12rem] font-serif italic tracking-tighter leading-none mb-8 opacity-90 animate-reveal" style={{ animationDelay: '100ms' }}>Matter.</h3>
                 </div>
                 <div className="max-w-md md:text-right">
-                  <span className="text-[10px] tracking-[0.6em] uppercase text-[#8c7e6d] block mb-6">Inventory of Fragments</span>
-                  <p className="text-xl font-light leading-relaxed opacity-40">
+                  <span className="text-[10px] tracking-[0.6em] uppercase text-accent-primary text-muted-large block mb-6">Inventory of Fragments</span>
+                  <p className="text-xl font-light leading-relaxed text-text-tertiary opacity-70">
                     We select materials not for their surface value, but for their ability to hold shadow and record time. 
                   </p>
                 </div>
@@ -325,15 +327,15 @@ const ProjectExhibition: React.FC = () => {
                       {/* Subtle Overlay Label */}
                       <div className={`absolute bottom-0 ${idx % 2 === 0 ? 'left-0' : 'right-0'} p-12 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent w-full md:w-auto`}>
                         <div className="flex flex-col space-y-4">
-                          <span className="text-[10px] uppercase tracking-[0.6em] text-[#8c7e6d]">Composition</span>
-                          <h4 className="text-4xl md:text-6xl font-serif italic tracking-tight">{mat.name}</h4>
-                          <div className="h-px bg-[#f5f2ed20] w-12 group-hover:w-full transition-all duration-1000" />
+                          <span className="text-[10px] uppercase tracking-[0.6em] text-accent-primary text-muted-large">Composition</span>
+                          <h4 className="text-4xl md:text-6xl font-serif italic tracking-tight text-text-primary">{mat.name}</h4>
+                          <div className="h-px bg-border-primary w-12 group-hover:w-full transition-all duration-1000" />
                         </div>
                       </div>
                     </div>
 
                     {/* Meta Info Staggered */}
-                    <div className={`mt-12 ${idx % 2 === 0 ? 'md:pl-24' : 'md:pr-24'} max-w-xs opacity-30 text-xs tracking-[0.4em] uppercase leading-relaxed font-light`}>
+                    <div className={`mt-12 ${idx % 2 === 0 ? 'md:pl-24' : 'md:pr-24'} max-w-xs text-text-tertiary opacity-70 text-xs tracking-[0.4em] uppercase leading-relaxed font-light`}>
                       Sourced meticulously to maintain the project's tonal equilibrium. Tactile response: {idx === 0 ? 'Thermal & Raw' : 'Soft & Diffuse'}.
                     </div>
                   </div>
@@ -344,18 +346,18 @@ const ProjectExhibition: React.FC = () => {
 
           {/* Location Map Section */}
           {currentProject.coordinates && (
-            <section className="py-40 bg-[#0d0d0d]">
+            <section className="py-40 bg-background-primary">
               <div className="px-8 md:px-20 max-w-screen-2xl mx-auto mb-12">
                 <div className="flex items-center gap-6 mb-8">
-                  <div className="h-px w-12 bg-[#8c7e6d] opacity-30" />
-                  <span className="text-[10px] uppercase tracking-[0.6em] text-[#8c7e6d] font-light">
+                  <div className="h-px w-12 bg-accent-primary opacity-50" />
+                  <span className="text-[10px] uppercase tracking-[0.6em] text-accent-primary text-muted-large font-light">
                     Location Context
                   </span>
                 </div>
-                <h3 className="text-3xl md:text-5xl font-serif italic mb-4">
+                <h3 className="text-3xl md:text-5xl font-serif italic mb-4 text-text-primary">
                   {currentProject.location}
                 </h3>
-                <p className="text-base font-light opacity-60 max-w-2xl">
+                <p className="text-base font-light text-text-secondary opacity-85 max-w-2xl">
                   Precise location and neighborhood context.
                 </p>
               </div>
@@ -364,17 +366,16 @@ const ProjectExhibition: React.FC = () => {
               <div className="px-8 md:px-20 max-w-screen-2xl mx-auto">
                 <div 
                   className="relative overflow-hidden"
-                  style={{
-                    border: `1px solid rgba(140, 126, 109, 0.3)`,
-                    borderRadius: '4px',
-                    backgroundColor: '#0d0d0d',
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
-                  }}
+                    style={{
+                      border: `1px solid var(--color-border-hairline)`,
+                      borderRadius: '4px',
+                      backgroundColor: 'var(--color-background-primary)',
+                      boxShadow: 'var(--shadow-md)',
+                    }}
                 >
                   {/* Top border accent */}
                   <div 
-                    className="absolute top-0 left-0 right-0 h-px z-10"
-                    style={{ backgroundColor: 'rgba(140, 126, 109, 0.2)' }}
+                    className="absolute top-0 left-0 right-0 h-px z-10 bg-border-hairline opacity-70"
                   />
                   
                   {/* Map */}
@@ -387,8 +388,7 @@ const ProjectExhibition: React.FC = () => {
                   
                   {/* Bottom border accent */}
                   <div 
-                    className="absolute bottom-0 left-0 right-0 h-px z-10"
-                    style={{ backgroundColor: 'rgba(140, 126, 109, 0.2)' }}
+                    className="absolute bottom-0 left-0 right-0 h-px z-10 bg-border-hairline opacity-70"
                   />
                 </div>
               </div>
@@ -396,15 +396,15 @@ const ProjectExhibition: React.FC = () => {
           )}
 
            {/* Next Project Prompt */}
-           <section className="py-60 text-center bg-[#0d0d0d]">
+           <section className="py-60 text-center bg-background-primary">
               {/* Link to Gallery */}
               <button
                 onClick={() => navigate('/gallery')}
-                className="group flex items-center justify-center space-x-4 text-[10px] uppercase tracking-[0.4em] opacity-40 hover:opacity-100 transition-all duration-500 mx-auto mb-8"
+                className="group flex items-center justify-center space-x-4 text-[10px] uppercase tracking-[0.4em] text-text-tertiary hover:text-text-primary transition-all duration-500 mx-auto mb-8"
               >
-                <span className="h-px w-8 bg-[#8c7e6d] opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
+                <span className="h-px w-8 bg-accent-primary opacity-60 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
                 <span>View Complete Gallery</span>
-                <span className="h-px w-8 bg-[#8c7e6d] opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
+                <span className="h-px w-8 bg-accent-primary opacity-60 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
               </button>
            </section>
         </div>
@@ -417,12 +417,12 @@ const ProjectExhibition: React.FC = () => {
           className="fixed bottom-8 md:bottom-12 right-8 md:right-12 z-50 group flex items-center space-x-5 bg-transparent"
         >
           <div className="flex flex-col items-end opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-4 group-hover:translate-x-0">
-            <span className="text-[10px] uppercase tracking-[0.4em] font-medium text-white">Begin</span>
-            <span className="text-[8px] uppercase tracking-[0.2em] opacity-40 text-white">Conversation</span>
+            <span className="text-[10px] uppercase tracking-[0.4em] font-medium text-text-primary text-shadow-sm">Begin</span>
+            <span className="text-[8px] uppercase tracking-[0.2em] text-text-secondary text-shadow-sm opacity-70">Conversation</span>
           </div>
-          <div className="w-14 h-14 rounded-full border border-[#f5f2ed20] flex items-center justify-center relative overflow-hidden transition-all duration-700 hover:border-[#8c7e6d] bg-[#0d0d0d]/30 backdrop-blur-xl">
-            <div className="absolute inset-0 bg-[#8c7e6d] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-            <svg className="w-5 h-5 relative z-10 group-hover:text-[#0d0d0d] transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-14 h-14 rounded-full border border-primary flex items-center justify-center relative overflow-hidden transition-all duration-700 hover:border-accent-primary bg-background-primary/30 backdrop-blur-xl">
+            <div className="absolute inset-0 bg-accent-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            <svg className="w-5 h-5 relative z-10 text-text-primary group-hover:text-background-primary transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
@@ -435,7 +435,7 @@ const ProjectExhibition: React.FC = () => {
           {PROJECTS.map((_, idx) => (
             <div 
               key={idx} 
-              className={`w-px transition-all duration-700 ${idx === currentIndex ? 'h-12 bg-[#f5f2ed]' : 'h-6 bg-[#f5f2ed20]'}`}
+              className={`w-px transition-all duration-700 ${idx === currentIndex ? 'h-12 bg-text-primary' : 'h-6 bg-border-primary'}`}
             />
           ))}
         </div>

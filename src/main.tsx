@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 import App from './App';
+import { initializeAccessibilityAudit } from './utils/accessibility-audit';
+
+// Initialize accessibility auditing in development
+initializeAccessibilityAudit();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

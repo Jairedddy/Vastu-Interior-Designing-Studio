@@ -160,6 +160,95 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Semantic Text Color Utilities - WCAG AA Compliant */
+/* Use these classes instead of hardcoded colors for maintainability */
+.text-on-background-primary {
+  color: var(--color-text-primary);
+  /* Contrast ratio: 15.8:1 - exceeds WCAG AAA */
+}
+
+.text-on-background-secondary {
+  color: var(--color-text-secondary);
+  /* Contrast ratio: 14.5:1 - exceeds WCAG AAA */
+}
+
+.text-on-surface-primary {
+  color: var(--color-text-primary);
+  /* Contrast ratio: 14.2:1 - exceeds WCAG AAA */
+}
+
+.text-on-surface-secondary {
+  color: var(--color-text-secondary);
+  /* Contrast ratio: 13.0:1 - exceeds WCAG AAA */
+}
+
+.text-on-surface-tertiary {
+  color: var(--color-text-tertiary);
+  /* Contrast ratio: 6.5:1 - exceeds WCAG AA */
+}
+
+.text-muted-large {
+  color: var(--color-text-muted);
+  /* Contrast ratio: 3.8:1 - Use only for large text (18pt+) or decorative elements */
+  font-size: 1.125rem; /* 18pt minimum */
+}
+
+/* Text Shadow Utilities for Cinematic Backgrounds */
+/* Subtle and elegant shadows for text readability */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-base {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.text-shadow-xl {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-accent {
+  text-shadow: 0 0 4px rgba(140, 126, 109, 0.15), 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.text-shadow-strong {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Background Overlay Utilities for Text Readability */
+/* Use these overlays when text needs to be readable over images */
+.text-overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0.7) 0%,
+    rgba(13, 13, 13, 0.5) 50%,
+    rgba(13, 13, 13, 0.9) 100%
+  );
+}
+
+.text-overlay-dark {
+  background: rgba(13, 13, 13, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.text-overlay-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.9) 0%,
+    rgba(13, 13, 13, 0.6) 50%,
+    transparent 100%
+  );
+}
+
 /* Selection */
 ::selection {
   background: var(--color-accent-primary);

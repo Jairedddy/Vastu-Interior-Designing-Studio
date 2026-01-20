@@ -23,6 +23,7 @@
     "yet-another-react-lightbox": "^3.28.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.11.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
