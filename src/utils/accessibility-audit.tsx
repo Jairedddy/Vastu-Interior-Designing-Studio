@@ -16,15 +16,15 @@ export function initializeAccessibilityAudit() {
   if (import.meta.env.DEV) {
     import('@axe-core/react').then((axe) => {
       axe.default(React, ReactDOM, 1000, {
+        // Focus on color contrast and text accessibility
         rules: {
-          // Focus on color contrast and text accessibility
           'color-contrast': { enabled: true },
           'color-contrast-enhanced': { enabled: true },
           'link-name': { enabled: true },
           'button-name': { enabled: true },
           'image-alt': { enabled: true },
         },
-      });
+      } as any);
     }).catch((err) => {
       // Silently fail if axe-core is not available
       console.warn('Accessibility audit not available:', err);

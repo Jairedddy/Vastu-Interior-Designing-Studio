@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Project } from '../types';
@@ -24,7 +24,7 @@ export interface ListingMapProps {
 const ListingMap: React.FC<ListingMapProps> = ({
   projects = [],
   focusedProject,
-  showClusters = false,
+  showClusters: _showClusters = false,
   zoom = 13,
   onProjectClick,
 }) => {

@@ -67,12 +67,12 @@ const SmartImage: React.FC<SmartImageProps> = ({
   }, []);
 
   // Generate responsive srcset for local images
-  const generateSrcSet = (baseSrc: string): string | undefined => {
+  const generateSrcSet = (_baseSrc: string): string | undefined => {
     // For external URLs (CDN), browsers handle srcset automatically if provided
     // For local images processed by vite-imagetools, you can use:
-    // const src400 = new URL(`${baseSrc}?w=400&format=webp`, import.meta.url).href;
-    // const src800 = new URL(`${baseSrc}?w=800&format=webp`, import.meta.url).href;
-    // return `${src400} 400w, ${src800} 800w, ${baseSrc} 1200w`;
+    // const src400 = new URL(`${_baseSrc}?w=400&format=webp`, import.meta.url).href;
+    // const src800 = new URL(`${_baseSrc}?w=800&format=webp`, import.meta.url).href;
+    // return `${src400} 400w, ${src800} 800w, ${_baseSrc} 1200w`;
     
     // For now, return undefined to use src (browsers will still lazy load)
     return undefined;
