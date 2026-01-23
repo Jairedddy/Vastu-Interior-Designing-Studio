@@ -210,18 +210,20 @@ const ProjectExhibition: React.FC = () => {
                 <button 
                   onClick={prevProject} 
                   disabled={isTransitioning}
-                  className={`p-3 md:p-4 border border-primary rounded-full transition-all text-text-primary ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-text-primary hover:text-background-primary'}`}
+                  className={`group relative p-3 md:p-4 border border-primary rounded-full transition-all duration-500 text-text-primary overflow-hidden ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:border-accent-primary'}`}
                   aria-label="Previous project"
                 >
-                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
+                  <div className="absolute inset-0 bg-accent-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+                  <svg className="w-4 h-4 md:w-5 md:h-5 relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
                 </button>
                 <button 
                   onClick={nextProject} 
                   disabled={isTransitioning}
-                  className={`p-3 md:p-4 border border-primary rounded-full transition-all text-text-primary ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:bg-text-primary hover:text-background-primary'}`}
+                  className={`group relative p-3 md:p-4 border border-primary rounded-full transition-all duration-500 text-text-primary overflow-hidden ${isTransitioning ? 'opacity-20 cursor-default' : 'hover:border-accent-primary'}`}
                   aria-label="Next project"
                 >
-                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
+                  <div className="absolute inset-0 bg-accent-primary translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+                  <svg className="w-4 h-4 md:w-5 md:h-5 relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
                 </button>
               </div>
             )}
@@ -392,19 +394,6 @@ const ProjectExhibition: React.FC = () => {
               </div>
             </section>
           )}
-
-           {/* Next Project Prompt */}
-           <section className="py-60 text-center bg-background-primary">
-              {/* Link to Gallery */}
-              <button
-                onClick={() => navigate('/gallery')}
-                className="group flex items-center justify-center space-x-4 text-[10px] uppercase tracking-[0.4em] text-text-tertiary hover:text-text-primary transition-all duration-500 mx-auto mb-8"
-              >
-                <span className="h-px w-8 bg-accent-primary opacity-60 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
-                <span>View Complete Gallery</span>
-                <span className="h-px w-8 bg-accent-primary opacity-60 group-hover:w-16 group-hover:opacity-100 transition-all duration-500" />
-              </button>
-           </section>
         </div>
       )}
 

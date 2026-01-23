@@ -5,7 +5,6 @@ import ProjectExhibition from './components/ProjectExhibition';
 import About from './components/About';
 import ConsultationFlow from './components/ConsultationFlow';
 import HeroCinematic from './components/HeroCinematic';
-import GallerySection from './components/GallerySection';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -51,7 +50,6 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HeroCinematic />} />
           <Route path="/exhibition" element={<ProjectExhibition />} />
-          <Route path="/gallery" element={<GallerySection />} />
           <Route path="/about" element={<About />} />
           <Route path="/consultation" element={<ConsultationFlow />} />
         </Routes>
