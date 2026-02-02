@@ -45,6 +45,7 @@ const config: Config = {
       fontFamily: {
         display: tokens.typography.fontFamily.display,
         body: tokens.typography.fontFamily.body,
+        accent: tokens.typography.fontFamily.accent,
         mono: tokens.typography.fontFamily.mono,
       },
       fontSize: tokens.typography.fontSize,

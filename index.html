@@ -17,19 +17,25 @@
     <link rel="preload" as="video" href="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-with-a-minimalist-design-and-a-view-40118-large.mp4" />
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical fonts for LCP optimization -->
+    <link rel="preload" as="font" href="/fonts/VastuDisplay-Regular.otf" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/VastuDisplay-Regular.ttf" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/VastuDisplay-Bold.otf" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/VastuDisplay-Bold.ttf" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/VastuBody-Regular.otf" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/VastuBody-Regular.ttf" type="font/ttf" crossorigin="anonymous">
+    
     <style>
       body {
         margin: 0;
         background-color: #0d0d0d;
         color: #f5f2ed;
-        font-family: 'Inter', sans-serif;
+        font-family: 'VastuBody', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         overflow-x: hidden;
       }
       h1, h2, h3, .font-serif {
-        font-family: 'Playfair Display', serif;
+        font-family: 'VastuDisplay', Georgia, serif;
       }
       ::selection {
         background: #8c7e6d;

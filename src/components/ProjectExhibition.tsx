@@ -173,7 +173,7 @@ const ProjectExhibition: React.FC = () => {
       <div className={`relative h-screen flex flex-col justify-end px-8 md:px-20 pb-20 md:pb-32 max-w-screen-2xl mx-auto z-20 transition-opacity duration-700 ${isExpanded && scrollY > 200 ? 'opacity-0' : 'opacity-100'}`}>
         <div className={`transition-opacity duration-700 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
           <div className={`flex items-center space-x-4 mb-6 ${!isTransitioning ? 'animate-text-delayed' : ''}`} style={{ animationDelay: '100ms' }}>
-            <span className="text-xs tracking-[0.4em] uppercase text-text-primary text-shadow-sm opacity-80">{currentProject.id} / 04</span>
+            <span className="text-xs tracking-[0.4em] uppercase text-text-primary text-shadow-sm opacity-80">{currentProject.id} / 03</span>
             <span className="h-px w-12 bg-brass-50 opacity-60" />
             <span className="text-xs tracking-[0.4em] uppercase text-text-primary text-shadow-sm opacity-80">{currentProject.category}</span>
           </div>

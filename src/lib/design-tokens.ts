@@ -106,8 +106,9 @@ export const shadows = {
 // Typography Scale
 export const typography = {
   fontFamily: {
-    display: ['Playfair Display', 'serif'],
-    body: ['Inter', 'sans-serif'],
+    display: ['VastuDisplay', 'Georgia', 'serif'],
+    body: ['VastuBody', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+    accent: ['VastuAccent', 'VastuDisplay', 'Georgia', 'serif'],
     mono: ['ui-monospace', 'monospace'],
   },
   fontSize: {

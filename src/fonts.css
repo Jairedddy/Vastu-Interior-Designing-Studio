@@ -1,0 +1,215 @@
+/**
+ * Custom Luxurious Typography System
+ * Estate Noir Design System - Premium Custom Fonts
+ * 
+ * Font families:
+ * - VastuDisplay: Elegant serif font for headings and display text
+ * - VastuBody: Clean sans-serif font for body content
+ * - VastuAccent: Optional accent font for special elements
+ * 
+ * Instructions:
+ * 1. Place your custom font files (OTF/TTF) in public/fonts/
+ * 2. Update font file names in @font-face declarations below
+ * 3. Ensure all font weights and styles are properly declared
+ */
+
+/* ============================================
+   DISPLAY FONT - Headings & Display Text
+   ============================================ */
+
+/* Regular */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-Regular.otf') format('opentype'),
+       url('/fonts/VastuDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-RegularItalic.otf') format('opentype'),
+       url('/fonts/VastuDisplay-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-Medium.otf') format('opentype'),
+       url('/fonts/VastuDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium Italic */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-MediumItalic.otf') format('opentype'),
+       url('/fonts/VastuDisplay-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Semibold */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-Semibold.otf') format('opentype'),
+       url('/fonts/VastuDisplay-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Semibold Italic */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-SemiboldItalic.otf') format('opentype'),
+       url('/fonts/VastuDisplay-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-Bold.otf') format('opentype'),
+       url('/fonts/VastuDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'VastuDisplay';
+  src: url('/fonts/VastuDisplay-BoldItalic.otf') format('opentype'),
+       url('/fonts/VastuDisplay-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+   BODY FONT - Content & Body Text
+   ============================================ */
+
+/* Light */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-Light.otf') format('opentype'),
+       url('/fonts/VastuBody-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Light Italic */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-LightItalic.otf') format('opentype'),
+       url('/fonts/VastuBody-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Regular */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-Regular.otf') format('opentype'),
+       url('/fonts/VastuBody-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-RegularItalic.otf') format('opentype'),
+       url('/fonts/VastuBody-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-Medium.otf') format('opentype'),
+       url('/fonts/VastuBody-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium Italic */
+@font-face {
+  font-family: 'VastuBody';
+  src: url('/fonts/VastuBody-MediumItalic.otf') format('opentype'),
+       url('/fonts/VastuBody-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+   ACCENT FONT - Special Elements (Optional)
+   ============================================ */
+
+/* Regular */
+@font-face {
+  font-family: 'VastuAccent';
+  src: url('/fonts/VastuAccent-Regular.otf') format('opentype'),
+       url('/fonts/VastuAccent-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'VastuAccent';
+  src: url('/fonts/VastuAccent-RegularItalic.otf') format('opentype'),
+       url('/fonts/VastuAccent-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'VastuAccent';
+  src: url('/fonts/VastuAccent-Medium.otf') format('opentype'),
+       url('/fonts/VastuAccent-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'VastuAccent';
+  src: url('/fonts/VastuAccent-Bold.otf') format('opentype'),
+       url('/fonts/VastuAccent-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   FONT FALLBACKS
+   ============================================
+   Graceful fallbacks if custom fonts fail to load
+   Display: Georgia, serif
+   Body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+   Accent: Same as display font
+*/
