@@ -22,7 +22,7 @@ export const fontFamilies = {
  * Returns formatted font size with line height and letter spacing
  */
 export const getFontSize = (size: keyof typeof typography.fontSize): string => {
-  const [fontSize, { lineHeight, letterSpacing }] = typography.fontSize[size];
+  const [fontSize, { lineHeight }] = typography.fontSize[size];
   return `${fontSize} / ${lineHeight} ${fontSize}`;
 };
 
